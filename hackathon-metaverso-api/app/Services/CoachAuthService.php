@@ -26,6 +26,9 @@ class CoachAuthService
 
     public function register(array $credentials): User
     {
-        return User::create($credentials);
+        $user = User::create($credentials);
+        $user->assignRole('coach');
+
+        return $user;
     }
 }

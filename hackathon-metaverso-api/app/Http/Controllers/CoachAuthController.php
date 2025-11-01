@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CoachLoginRequest;
 use App\Http\Requests\CoachRegisterRequest;
+use App\Http\Resources\UserResource;
 use App\Services\CoachAuthService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -29,6 +30,8 @@ class CoachAuthController
 
     public function register(CoachRegisterRequest $request): JsonResponse
     {
-        return response()->json($this->coachAuthService->register($request->validated()));
+        return response()->json(
+            new UserResource($this->coachAuthService->register($request->validated()))
+        );
     }
 }
