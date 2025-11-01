@@ -18,6 +18,7 @@ services:
       context: ./hackathon-metaverso-api
     container_name: hackathon-backend
     restart: always
+    env_file: ./hackathon-metaverso-api/.env
     depends_on:
       - postgres
     networks:
