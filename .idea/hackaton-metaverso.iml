@@ -133,6 +133,8 @@
       <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/sebastian/code-unit-reverse-lookup" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
