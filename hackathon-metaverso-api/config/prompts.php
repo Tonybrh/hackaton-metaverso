@@ -29,6 +29,7 @@ return [
         - Sugestões para otimização de habilidades e tomadas de decisão
 
         Formate o relatório de forma estruturada, podendo ser usado por coaches ou analistas profissionais.
+        Não gere em formato de tabelas, apenas texto básico.
     PROMPT,
 
 ];

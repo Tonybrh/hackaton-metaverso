@@ -6,27 +6,42 @@ use App\Clients\OpenAIClient;
 use App\Models\Chat;
 use App\Models\ChatMessage;
 use App\Models\MatchData;
+use App\Models\Player;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
 
-class ChatService
+readonly class ChatService
 {
     private const DEFAULT_MODEL = 'gpt-4.1-mini';
 
-    public function __construct(private readonly OpenAIClient $openAIClient)
+    public function __construct(private OpenAIClient $openAIClient, private EmbedService $embedService  )
     {
     }
 
-    public function generateInsights(): JsonResponse
+    public function generateInsights(int $playerId): JsonResponse
     {
+        $player = Player::findOrFail($playerId);
+
+        $matches = MatchData::query()
+            ->whereRaw("EXISTS (
+            SELECT 1 FROM jsonb_array_elements(players) AS p
+            WHERE p->>'puuid' = ?
+        )", [$player->puuid])
+            ->get();
+        $matchesArray = $matches->toArray();
+
         $response = $this->openAIClient->generateChatResponse(
             self::DEFAULT_MODEL,
-            $this->buildInput((array)MatchData::all()),
+            $this->buildInput($matchesArray),
             config('prompts.generate_insights')
         );
 
         $message = $this->concatResponse($response);
-        return response()->json(['relatório' => $message]);
+
+        return response()->json([
+            'player' => $player->name,
+            'relatório' => $message
+        ]);
     }
 
 
@@ -67,6 +82,7 @@ class ChatService
     public function prepareContext(int $chatId, string $userMessage): array
     {
         $history = $this->getChatHistory($chatId);
+        $contexts = $this->embedService->getContext($userMessage, 3);
 
         if (!$history->contains(fn($message) => $message->role === 'developer')) {
             $this->createMessage([
@@ -83,6 +99,11 @@ class ChatService
                 'content' => $message->content,
             ];
         }
+
+        if (!empty($contexts)) {
+            $messages[] = $this->buildSystemMessage($contexts);
+        }
+
         $messages[] = [
             'role' => 'user',
             'content' => $userMessage,

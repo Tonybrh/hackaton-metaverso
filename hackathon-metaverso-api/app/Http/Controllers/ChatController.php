@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SendMessageRequest;
 use App\Models\Chat;
+use App\Models\Player;
 use App\Services\ChatService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -28,8 +29,8 @@ class ChatController extends Controller
         return $this->chatService->answerChatMessage($chat, $request->validated()['message']);
     }
 
-    public function generateInsights(Request $request): JsonResponse
+    public function generateInsights(Request $request, Player $player): JsonResponse
     {
-        return $this->chatService->generateInsights();
+        return $this->chatService->generateInsights($player->id);
     }
 }

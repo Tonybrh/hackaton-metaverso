@@ -17,6 +17,7 @@ class PlayerRegisterRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:players,email',
             'user_id' => 'required|exists:users,id',
+            'puuid' => 'required|unique:players,puuid',
         ];
     }
 }

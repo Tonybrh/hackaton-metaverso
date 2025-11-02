@@ -15,7 +15,8 @@ class Player extends Model
     protected $fillable = [
         'name',
         'email',
-        'user_id'
+        'user_id',
+        'puuid',
     ];
     public function coach(): BelongsTo
     {
