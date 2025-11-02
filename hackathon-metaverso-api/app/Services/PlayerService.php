@@ -15,11 +15,11 @@ class PlayerService
     public function register(array $data): Player
     {
         $player = Player::create($data);
-        $player->notify(new PlayerNeedsPasswordNotification());
+        $token = Password::createToken($player);
+        $player->notify(new PlayerNeedsPasswordNotification($token));
 
         return $player;
     }
-
     public function resetPassword(array $credentials): void
     {
         $status = Password::reset(

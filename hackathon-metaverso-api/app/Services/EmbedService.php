@@ -33,7 +33,7 @@ class EmbedService
 
             $similarity = $this->cosineSimilarity($queryEmbedding, $embedding);
             return [
-                'content' => $doc['content'],
+                'content' => $doc['evaluation_text'],
                 'similarity' => $similarity,
             ];
 

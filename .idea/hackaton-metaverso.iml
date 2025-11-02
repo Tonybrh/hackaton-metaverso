@@ -135,6 +135,7 @@
       <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/sebastian/code-unit" />
       <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/hackathon-metaverso-api/vendor/spatie/laravel-permission" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

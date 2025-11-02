@@ -36,6 +36,13 @@ class CoachAuthController
         );
     }
 
+    public function profile(): UserResource
+    {
+        $user = auth()->user();
+
+        return new UserResource($user);
+    }
+
     public function getPlayers(User $coach): JsonResponse
     {
         return response()->json($coach->players);

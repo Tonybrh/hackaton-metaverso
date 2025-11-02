@@ -11,6 +11,7 @@ Route::prefix('/coach')->group(function (){
     Route::post('/register', [CoachAuthController::class, 'register']);
     Route::middleware(['auth:sanctum', 'role:coach'])->group(function () {
         Route::post('/logout', [CoachAuthController::class, 'logout']);
+        Route::get('/profile', [CoachAuthController::class, 'profile']);
         Route::get('{coach}/players', [CoachAuthController::class, 'getPlayers']);
     });
 });

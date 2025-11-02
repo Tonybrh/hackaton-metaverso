@@ -12,7 +12,8 @@ class PlayerEvaluationService
     public function store(array $data)
     {
         $embedding = $this->openAIClient->generateEmbeddings($data['evaluation_text'], 'text-embedding-3-small');
-        $data['embedding'] = $embedding['data'] ?? null;
+        $data['embedding'] = $embedding['embedding'] ?? null;
+
 
         return PlayerEvaluation::create($data);
     }
