@@ -15,19 +15,17 @@ export function CreateAccountPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     // Validação básica de senha
     if (password !== confirmPassword) {
       alert("As senhas não coincidem!");
       return;
     }
-
+    
     setSuccess(true);
     // Redireciona para a tela de boas-vindas após 2 segundos
     setTimeout(() => {
-      navigate("/welcome", {
-        state: { coachName: name.split(" ")[0] },
-      });
+      navigate("/welcome", { state: { coachName: name.split(' ')[0] } });
     }, 2000);
   };
 
@@ -45,16 +43,18 @@ export function CreateAccountPage() {
             <div className="w-20 h-20 mx-auto rounded-full bg-[#B3AAFF]/20 flex items-center justify-center">
               <Check size={40} className="text-[#B3AAFF]" />
             </div>
-
-            <h2 className="text-[#FDFDFD]" style={{ fontSize: "28px" }}>
+            
+            <h2 className="text-[#FDFDFD]" style={{ fontSize: '28px' }}>
               Conta criada com sucesso!
             </h2>
-
-            <p className="text-[#B3AAFF]" style={{ fontSize: "18px" }}>
+            
+            <p className="text-[#B3AAFF]" style={{ fontSize: '18px' }}>
               Bem-vindo à DataGG, Coach.
             </p>
-
-            <p className="text-[#B3AAFF]/70">Preparando seu painel...</p>
+            
+            <p className="text-[#B3AAFF]/70">
+              Preparando seu painel...
+            </p>
           </div>
         </div>
       </div>
@@ -64,23 +64,16 @@ export function CreateAccountPage() {
   return (
     <div className="min-h-screen bg-[#121111] flex relative">
       <BackToHomeButton />
-
+      
       {/* Lado esquerdo - Formulário */}
       <div className="flex-1 flex items-center justify-center p-16">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center space-y-4">
             <div className="flex items-center justify-center gap-3">
-              <span
-                className="text-[60px]"
-                style={{
-                  filter: "drop-shadow(0 0 12px rgba(179, 170, 255, 0.4))",
-                }}
-              >
-                👾
-              </span>
+              <span className="text-[60px]" style={{ filter: 'drop-shadow(0 0 12px rgba(179, 170, 255, 0.4))' }}>👾</span>
               <Logo variant="light" size="xxlarge" />
             </div>
-            <h2 className="text-[#FDFDFD]" style={{ fontSize: "28px" }}>
+            <h2 className="text-[#FDFDFD]" style={{ fontSize: '28px' }}>
               Criar Conta de Coach
             </h2>
             <p className="text-[#B3AAFF]">
@@ -91,9 +84,7 @@ export function CreateAccountPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
               <div>
-                <label className="block text-[#B3AAFF] mb-2">
-                  Nome completo
-                </label>
+                <label className="block text-[#B3AAFF] mb-2">Nome completo</label>
                 <input
                   type="text"
                   value={name}
@@ -117,9 +108,7 @@ export function CreateAccountPage() {
               </div>
 
               <div>
-                <label className="block text-[#B3AAFF] mb-2">
-                  Nome da equipe
-                </label>
+                <label className="block text-[#B3AAFF] mb-2">Nome da equipe</label>
                 <input
                   type="text"
                   value={teamName}
@@ -143,9 +132,7 @@ export function CreateAccountPage() {
               </div>
 
               <div>
-                <label className="block text-[#B3AAFF] mb-2">
-                  Confirmar senha
-                </label>
+                <label className="block text-[#B3AAFF] mb-2">Confirmar senha</label>
                 <input
                   type="password"
                   value={confirmPassword}
@@ -159,11 +146,7 @@ export function CreateAccountPage() {
 
             <div className="bg-[#380361]/20 border border-[#49007F]/30 rounded-lg p-4">
               <p className="text-[#B3AAFF]">
-                Ao criar sua conta, você concorda com os{" "}
-                <span className="text-[#FDFDFD] underline cursor-pointer">
-                  Termos da DataGG
-                </span>{" "}
-                e com o uso dos seus dados para gerar análises e insights.
+                Ao criar sua conta, você concorda com os <span className="text-[#FDFDFD] underline cursor-pointer">Termos da DataGG</span> e com o uso dos seus dados para gerar análises e insights.
               </p>
             </div>
 
