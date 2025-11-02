@@ -23,7 +23,7 @@ class EmbedService
             Log::warning('Erro na geração de embedding para query.', ['query' => $queryEmbedding]);
             return [];
         }
-        $evaluationContexts = PlayerEvaluation::all(['embedding', 'evaluation_context']);
+        $evaluationContexts = PlayerEvaluation::all(['embedding', 'evaluation_text']);
 
         $results = $evaluationContexts->map(function ($doc) use ($queryEmbedding) {
             $embedding = json_decode($doc['embedding'], true);

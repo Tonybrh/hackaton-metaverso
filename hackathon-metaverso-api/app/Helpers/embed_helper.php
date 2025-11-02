@@ -1,16 +1,5 @@
 <?php
 
-use Smalot\PdfParser\Parser;
-use PhpOffice\PhpWord\IOFactory;
-
-if (!function_exists('extract_text_from_pdf')) {
-    function extract_text_from_pdf(string $path): string
-    {
-        $parser = new Parser();
-        $pdf = $parser->parseFile($path);
-        return mb_convert_encoding($pdf->getText(), 'UTF-8', 'UTF-8');
-    }
-}
 
 
 if (!function_exists('split_text_by_max_chars')) {

@@ -13,4 +13,8 @@ class PlayerEvaluation extends Model
         'embedding',
         'nota_geral',
     ];
+
+    protected $casts = [
+        'embedding' => 'array',
+    ];
 }
